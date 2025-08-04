@@ -1,0 +1,40 @@
+services:
+  app:
+    image: kooldev/php:8.3-nginx
+    container_name: app
+    expose:
+      - "80"
+    volumes:
+      - .:/app
+    environment:
+      - KOOL_ASUSER=1
+      - UID=1000
+    networks:
+      - web
+  database:
+    image: postgis/postgis:13-3.5-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: "${DB_DATABASE:-database}"
+      POSTGRES_USER: "${DB_USERNAME:-user}"
+      POSTGRES_PASSWORD: "${DB_PASSWORD:-pass}"
+    volumes:
+      - database:/var/lib/postgresql/data:delegated
+      - ./docker/init-db.sh:/docker-entrypoint-initdb.d/init-db.sh:ro
+    networks:
+      - kool_local
+
+  cache:
+    image: redis:7-alpine
+    volumes:
+      - cache:/data:delegated
+    networks:
+      - kool_local
+
+networks:
+  kool_local:
+
+volumes:
+  database:
+  cache:
