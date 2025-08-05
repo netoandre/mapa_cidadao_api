@@ -103,6 +103,23 @@ class OcurrenceControllerFTest extends TestCase
         ]);
     }
 
+    public function test_other_auth_user_cannot_delete_ocurrence()
+    {
+        $user = User::factory()->create();
+        $otherUser = User::factory()->create();
+        $ocurrence = Ocurrence::factory()->create([
+            'user_id' => $user->id,
+        ]);
+
+        $response = $this->actingAs($otherUser)->deleteJson("/api/ocurrences/{$ocurrence->id}");
+
+        $response->assertStatus(403);
+
+        $this->assertDatabaseHas('ocurrences', [
+            'id' => $ocurrence->id,
+        ]);
+    }
+
     public function test_unauth_user_cannot_delete_ocurrence()
     {
         $user      = User::factory()->create();

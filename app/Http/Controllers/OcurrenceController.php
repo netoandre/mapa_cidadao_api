@@ -88,7 +88,7 @@ class OcurrenceController extends Controller
 
         $data = $ocurrenceStore->toArray();
 
-        $data['user_id']  = $request->user()->id;
+        $data['user_id'] = $request->user()->id;
         $data['location'] = $locationFormated;
 
         $ocurrence = Ocurrence::create($data);
@@ -110,8 +110,13 @@ class OcurrenceController extends Controller
      */
     public function destroy(Ocurrence $ocurrence): JsonResponse
     {
-        $ocurrence->delete();
+        if ($ocurrence->user_id === auth()->user()->id) {
+            $ocurrence->delete();
 
-        return response()->json(status: 204);
+            return response()->json(status: 204);
+
+        }
+        return response()->json(["message" => "Você não tem permissão para deletar esta ocorrência."], status: 403);
+
     }
 }
