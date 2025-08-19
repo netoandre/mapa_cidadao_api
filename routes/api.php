@@ -32,7 +32,7 @@ Route::prefix('ocurrences')->group(function () {
 
 });
 
-Route::get('/types-ocurrences', function () {
+Route::get('/types-ocurrence', function () {
 
 
     $typesOcurrences = TypeOcurrence::all();

@@ -20,7 +20,7 @@ class TypeOcurrenceControllerFTest extends TestCase
         $this->seed(TypeOcurrenceSeeder::class);
 
         // Chama a API
-        $response = $this->getJson('/api/types-ocurrences');
+        $response = $this->getJson('/api/types-ocurrence');
 
         // Faz asserções
         $response->assertStatus(200)
