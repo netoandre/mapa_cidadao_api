@@ -3,6 +3,8 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\OcurrenceController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\TypeOcurrenceController;
+use App\Models\TypeOcurrence;
 use Illuminate\Support\Facades\Route;
 
 Route::post('/register', RegisterController::class);
@@ -28,4 +30,14 @@ Route::prefix('ocurrences')->group(function () {
         Route::delete('/{ocurrence}', [OcurrenceController::class, 'destroy']);
     });
 
+});
+
+Route::get('/types-ocurrences', function () {
+
+
+    $typesOcurrences = TypeOcurrence::all();
+
+    return response()->json([
+        'types_ocurrences' => $typesOcurrences,
+    ]);
 });
