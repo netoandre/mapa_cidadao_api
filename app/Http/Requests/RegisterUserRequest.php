@@ -23,7 +23,7 @@ class RegisterUserRequest extends FormRequest
     {
         return [
             'name'     => 'required|string|max:100',
-            'email'    => 'required|email|unique:users',
+            'email'    => 'required|email:rfc,dns|unique:users',
             'password' => [
                 'required',
                 'string',
@@ -50,6 +50,7 @@ class RegisterUserRequest extends FormRequest
         return [
             'password.confirmed' => 'A confirmação da senha não corresponde.',
             'password.regex'     => 'A senha deve conter pelo menos uma letra maiúscula, uma minúscula, um número e um caractere especial.',
+            'email.email' => 'O e-mail informado não é válido ou o domínio não existe.',
         ];
     }
 

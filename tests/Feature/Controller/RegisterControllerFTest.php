@@ -16,7 +16,7 @@ class RegisterControllerFTest extends TestCase
     {
         $payload = [
             'name'                  => 'Anakin Skywalker',
-            'email'                 => 'anakins@example.com',
+            'email'                 => 'anakins@gmail.com',
             'password'              => 'StrongP@ssword123',
             'date_birth'            => '1999-01-01',
             'password_confirmation' => 'StrongP@ssword123',
