@@ -37,11 +37,13 @@ class Ocurrence extends Model
         'country',
         'solution_description',
         'type_closure',
+        'resolution_date',
     ];
 
     protected $casts = [
         'location'  => Point::class,
         'is_active' => 'boolean',
+        'resolution_date' => 'datetime',
     ];
 
     public function type(): BelongsTo

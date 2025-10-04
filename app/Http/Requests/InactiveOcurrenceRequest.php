@@ -27,15 +27,20 @@ class InactiveOcurrenceRequest extends FormRequest
         return [
             'type_closure' => [
                 'required',
-                Rule::in(array_map(fn ($value) => $value->value, TypeOcurrenceClosure::cases())),
+                Rule::in(array_map(fn($value) => $value->value, TypeOcurrenceClosure::cases())),
             ],
             'solution_description' => [
                 'string',
                 'max:500',
-                Rule::requiredIf(fn () => in_array($this->input('type_closure'), [
+                Rule::requiredIf(fn() => in_array($this->input('type_closure'), [
                     TypeOcurrenceClosure::RESOLVED->value,
                     TypeOcurrenceClosure::OTHER->value,
                 ])),
+            ],
+            'resolution_date' => [
+                'nullable',
+                'date',
+                'before_or_equal:today',
             ],
         ];
     }
@@ -54,12 +59,16 @@ class InactiveOcurrenceRequest extends FormRequest
         return [
             'type_closure' => [
                 'description' => 'Tipo de encerramento de ocorrência.',
-                'example'     => 'mistake',
+                'example' => 'mistake',
             ],
             'solution_description' => [
-                'description' => 'Descrição da solução aplicada. Obrigatório se type_closure for resolved.',
-                'example'     => 'Problema resolvido pela companhia',
+                'description' => 'Descrição da solução aplicada. Obrigatório se type_closure for resolved ou other.',
+                'example' => 'Problema resolvido pela companhia',
 
+            ],
+            'resolution_date' => [
+                'description' => 'Data de resolução da ocorrência. Deve ser uma data anterior ou igual a hoje.',
+                'example' => '2025-09-30',
             ],
         ];
     }

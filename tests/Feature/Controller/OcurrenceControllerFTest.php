@@ -164,6 +164,7 @@ class OcurrenceControllerFTest extends TestCase
                 [
                     'type_closure' => TypeOcurrenceClosure::RESOLVED->value,
                     'solution_description' => 'Tudo Certo',
+                    'resolution_date' => now()->toDateString(),
                 ],
             ],
 
@@ -176,6 +177,7 @@ class OcurrenceControllerFTest extends TestCase
                 [
                     'type_closure' => TypeOcurrenceClosure::OTHER->value,
                     'solution_description' => 'Tudo Certo',
+                    'resolution_date' => now()->toDateString(),
                 ],
             ],
         ];
@@ -300,7 +302,15 @@ class OcurrenceControllerFTest extends TestCase
                 [
                     'type_closure' => TypeOcurrenceClosure::OTHER->value,
                 ],
+               
             ],
+            [
+                [
+                    'type_closure' => TypeOcurrenceClosure::RESOLVED->value,
+                    'solution_description' => 'Tudo Certo',
+                    'resolution_date' => now()->addDay()->toDateString(),
+                ],
+            ]
         ];
     }
 
