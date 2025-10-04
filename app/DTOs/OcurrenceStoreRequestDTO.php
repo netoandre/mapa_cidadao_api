@@ -31,11 +31,11 @@ class OcurrenceStoreRequestDTO
     {
         $this->location    = new LocationDTO($data['location']);
         $this->typeId      = $data['type_id'];
-        $this->description = $data['description'] ?? "";
-        $this->addressName = $data['address_name'] ?? "";
-        $this->city        = $data['city']    ?? null;
-        $this->state       = $data['state']   ?? null;
-        $this->country     = $data['country'] ?? null;
+        $this->description = $data['description']  ?? '';
+        $this->addressName = $data['address_name'] ?? '';
+        $this->city        = $data['city']         ?? null;
+        $this->state       = $data['state']        ?? null;
+        $this->country     = $data['country']      ?? null;
     }
 
     public function toArray(): array

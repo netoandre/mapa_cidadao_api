@@ -19,8 +19,8 @@ class OcurrenceService
             $dto->location->coordinates[1]
         );
 
-        $data = $dto->toArray();
-        $data['user_id'] = $userId;
+        $data             = $dto->toArray();
+        $data['user_id']  = $userId;
         $data['location'] = $locationFormated;
 
         return Ocurrence::create($data);
@@ -30,9 +30,9 @@ class OcurrenceService
     {
         match ($dto->type_closure) {
             TypeOcurrenceClosure::RESOLVED->value => $this->closeOcurrenceWithDescription($ocurrence, $dto->type_closure, $dto->solution_description, $dto->resolution_date),
-            TypeOcurrenceClosure::MISTAKE->value => $ocurrence->delete(),
-            TypeOcurrenceClosure::OTHER->value => $this->closeOcurrenceWithDescription($ocurrence, $dto->type_closure, $dto->solution_description, $dto->resolution_date),
-            default => abort(404, 'Não existe esse tipo de encerramento.')
+            TypeOcurrenceClosure::MISTAKE->value  => $ocurrence->delete(),
+            TypeOcurrenceClosure::OTHER->value    => $this->closeOcurrenceWithDescription($ocurrence, $dto->type_closure, $dto->solution_description, $dto->resolution_date),
+            default                               => abort(404, 'Não existe esse tipo de encerramento.')
         };
 
         return $ocurrence;
@@ -41,10 +41,10 @@ class OcurrenceService
     private function closeOcurrenceWithDescription(Ocurrence $ocurrence, string $type, string $solutionDescription, ?DateTime $resolutionDate): void
     {
         $ocurrence->update([
-            'type_closure' => $type,
-            'is_active' => false,
+            'type_closure'         => $type,
+            'is_active'            => false,
             'solution_description' => $solutionDescription,
-            'resolution_date' => $resolutionDate,
+            'resolution_date'      => $resolutionDate,
 
         ]);
     }

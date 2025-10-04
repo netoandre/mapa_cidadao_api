@@ -41,8 +41,8 @@ class Ocurrence extends Model
     ];
 
     protected $casts = [
-        'location'  => Point::class,
-        'is_active' => 'boolean',
+        'location'        => Point::class,
+        'is_active'       => 'boolean',
         'resolution_date' => 'datetime',
     ];
 

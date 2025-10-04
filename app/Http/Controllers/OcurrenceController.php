@@ -9,6 +9,7 @@ use App\Services\OcurrenceService;
 use Clickbar\Magellan\Data\Geometries\Point;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
+use Request;
 
 class OcurrenceController extends Controller
 {
@@ -155,6 +156,7 @@ class OcurrenceController extends Controller
                 $this->ocurrenceService->inactivate($ocurrence, $inactiveOcurrence);
             } catch (\Exception $e) {
                 Log::error('Erro ao inativar ocorrência', ['exception' => $e]);
+
                 return response()->json('Não foi possível inativar a ocorrência.', 422);
             }
 
@@ -164,5 +166,63 @@ class OcurrenceController extends Controller
 
         return response()->json(['message' => 'Você não tem permissão para inativar esta ocorrência.'], 403);
 
+    }
+
+    /**
+     * @group Ocorrências
+     * Listar ocorrências do usuário autenticado
+     *
+     * Este endpoint retorna todas as ocorrências registradas pelo usuário autenticado,
+     * em ordem decrescente de criação. Os resultados são paginados.
+     *
+     * @authenticated
+     *
+     * @queryParam page int Opcional. Número da página de resultados a ser retornada. Exemplo: 2
+     *
+     * @response 200 {
+     *   "current_page": 1,
+     *   "data": [
+     *     {
+     *       "id": 1,
+     *       "type_id": 2,
+     *       "user_id": 8,
+     *       "description": "Buraco na rua que está dificultando o tráfego",
+     *       "location": {
+     *         "type": "Point",
+     *         "coordinates": [-15.7801, -47.9292]
+     *       },
+     *       "address_name": "Rua das Palmeiras, 123",
+     *       "city": "Belém",
+     *       "state": "PA",
+     *       "country": "Brasil",
+     *       "is_active": true,
+     *       "created_at": "2025-07-10T20:30:00.000000Z",
+     *       "updated_at": "2025-07-10T20:30:00.000000Z"
+     *     }
+     *   ],
+     *   "first_page_url": "http://localhost/api/ocurrences/my-ocurrences?page=1",
+     *   "from": 1,
+     *   "last_page": 3,
+     *   "last_page_url": "http://localhost/api/ocurrences/my-ocurrences?page=3",
+     *   "links": [
+     *     {"url": null, "label": "&laquo; Previous", "active": false},
+     *     {"url": "http://localhost/api/ocurrences/my-ocurrences?page=1", "label": "1", "active": true},
+     *     {"url": "http://localhost/api/ocurrences/my-ocurrences?page=2", "label": "2", "active": false},
+     *     {"url": "http://localhost/api/ocurrences/my-ocurrences?page=3", "label": "3", "active": false},
+     *     {"url": "http://localhost/api/ocurrences/my-ocurrences?page=2", "label": "Next &raquo;", "active": false}
+     *   ],
+     *   "next_page_url": "http://localhost/api/ocurrences/my-ocurrences?page=2",
+     *   "path": "http://localhost/api/ocurrences/my-ocurrences",
+     *   "per_page": 10,
+     *   "prev_page_url": null,
+     *   "to": 10,
+     *   "total": 25
+     * }
+     */
+    public function ocurrencesUserAuth(Request $request): JsonResponse
+    {
+        $ocurrences = Ocurrence::where(['user_id' => auth()->id()])->orderByDesc('created_at')->paginate(10);
+
+        return response()->json($ocurrences);
     }
 }

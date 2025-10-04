@@ -1,0 +1,137 @@
+{
+    "ocurrences": {
+        "current_page": 1,
+        "data": [
+            {
+                "id": 23,
+                "location": {
+                    "type": "Point",
+                    "coordinates": [-15.642362, 75.824533]
+                },
+                "type_id": 119,
+                "user_id": 31,
+                "description": "Nobis mollitia laboriosam libero blanditiis ducimus iure vitae ipsa. Porro eveniet sapiente odit ipsam. Quis doloribus cupiditate est laudantium dolorem. Totam quia quia mollitia illum voluptatem.",
+                "address_name": "7416 Madyson Turnpike Suite 737",
+                "city": "North Luciennehaven",
+                "country": "French Polynesia",
+                "state": "AK",
+                "is_active": true,
+                "created_at": "2025-10-04T19:38:15.000000Z",
+                "updated_at": "2025-10-04T19:38:15.000000Z",
+                "type_closure": null,
+                "solution_description": null,
+                "resolution_date": null
+            },
+            {
+                "id": 24,
+                "location": {
+                    "type": "Point",
+                    "coordinates": [26.308112, -46.753372]
+                },
+                "type_id": 120,
+                "user_id": 31,
+                "description": "Omnis vel aperiam perspiciatis velit optio et aut itaque. Facilis reiciendis optio quo deserunt voluptatibus aliquid. Sit nemo repudiandae perspiciatis ut impedit pariatur. Provident sed sit sint distinctio exercitationem.",
+                "address_name": "248 Merle Mount",
+                "city": "North Mabelview",
+                "country": "Anguilla",
+                "state": "KS",
+                "is_active": true,
+                "created_at": "2025-10-04T19:38:15.000000Z",
+                "updated_at": "2025-10-04T19:38:15.000000Z",
+                "type_closure": null,
+                "solution_description": null,
+                "resolution_date": null
+            },
+            {
+                "id": 25,
+                "location": {
+                    "type": "Point",
+                    "coordinates": [-38.613435, 52.257917]
+                },
+                "type_id": 121,
+                "user_id": 31,
+                "description": "Amet doloribus adipisci temporibus architecto. Dolore sint rem quia nisi mollitia. Dolorem et aspernatur aliquam nam quod.",
+                "address_name": "2835 Reichert Turnpike Apt. 329",
+                "city": "Lake Elizabeth",
+                "country": "Trinidad and Tobago",
+                "state": "MD",
+                "is_active": true,
+                "created_at": "2025-10-04T19:38:15.000000Z",
+                "updated_at": "2025-10-04T19:38:15.000000Z",
+                "type_closure": null,
+                "solution_description": null,
+                "resolution_date": null
+            },
+            {
+                "id": 26,
+                "location": {
+                    "type": "Point",
+                    "coordinates": [-28.440357, -35.920443]
+                },
+                "type_id": 122,
+                "user_id": 31,
+                "description": "Et nemo laborum amet ut repellendus sit. At inventore quibusdam cum fugiat quas esse perspiciatis consequatur. Sequi voluptatem rerum eligendi deleniti. Quod voluptas nobis unde amet dicta. Laboriosam quo aspernatur voluptates dolorum ut dolore.",
+                "address_name": "9624 Gina Views",
+                "city": "Artmouth",
+                "country": "Estonia",
+                "state": "FL",
+                "is_active": true,
+                "created_at": "2025-10-04T19:38:15.000000Z",
+                "updated_at": "2025-10-04T19:38:15.000000Z",
+                "type_closure": null,
+                "solution_description": null,
+                "resolution_date": null
+            },
+            {
+                "id": 27,
+                "location": {
+                    "type": "Point",
+                    "coordinates": [21.98236, 73.099228]
+                },
+                "type_id": 123,
+                "user_id": 31,
+                "description": "Dolorum officiis provident similique quia autem perspiciatis omnis voluptas. Fuga quae est ut tempora vel.",
+                "address_name": "620 Lockman Field Apt. 585",
+                "city": "West Janaemouth",
+                "country": "Suriname",
+                "state": "AL",
+                "is_active": true,
+                "created_at": "2025-10-04T19:38:15.000000Z",
+                "updated_at": "2025-10-04T19:38:15.000000Z",
+                "type_closure": null,
+                "solution_description": null,
+                "resolution_date": null
+            }
+        ],
+        "first_page_url": "http://localhost/api/ocurrences/my-ocurrences?page=1",
+        "from": 1,
+        "last_page": 1,
+        "last_page_url": "http://localhost/api/ocurrences/my-ocurrences?page=1",
+        "links": [
+            {
+                "url": null,
+                "label": "&laquo; Previous",
+                "page": null,
+                "active": false
+            },
+            {
+                "url": "http://localhost/api/ocurrences/my-ocurrences?page=1",
+                "label": "1",
+                "page": 1,
+                "active": true
+            },
+            {
+                "url": null,
+                "label": "Next &raquo;",
+                "page": null,
+                "active": false
+            }
+        ],
+        "next_page_url": null,
+        "path": "http://localhost/api/ocurrences/my-ocurrences",
+        "per_page": 10,
+        "prev_page_url": null,
+        "to": 5,
+        "total": 5
+    }
+}

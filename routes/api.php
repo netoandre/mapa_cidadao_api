@@ -27,6 +27,7 @@ Route::prefix('ocurrences')->group(function () {
     Route::middleware('auth:sanctum')->group(function () {
         Route::post('', [OcurrenceController::class, 'store']);
         Route::post('inactivate/{ocurrence}', [OcurrenceController::class, 'inactiveOcurrence']);
+        Route::get('my-ocurrences', [OcurrenceController::class, 'ocurrencesUserAuth']);
     });
 
 });
