@@ -1,36 +1,37 @@
 # Mapa Cidadão API
 
-## 📋 Descrição
+## 📋 Description
 
-**Mapa Cidadão API** é uma aplicação backend desenvolvida em Laravel que permite o registro e monitoramento de ocorrências urbanas em um mapa interativo. Com foco em participação cidadã e gestão urbana, a API possibilita que usuários registrem problemas como:
+**Mapa Cidadão API** is a backend application developed in Laravel that enables the registration and monitoring of urban incidents on an interactive map. Focused on citizen participation and public management, the application allows users to report various types of problems affecting their neighborhoods.
 
-- 🗑️ Acúmulo de lixo
-- 💡 Falta de iluminação pública
-- 🛣️ Problemas de pavimentação
-- 🌊 Alagamentos
-- 🚧 Outros tipos de ocorrências
+Examples of incidents that can be registered:
+- 🗑️ Garbage accumulation
+- 💡 Lack of public lighting
+- 🛣️ Pavement problems
+- 🌊 Flooding
+- 🚧 Other types of incidents
 
-Cada ocorrência cadastrada contém:
-- 📍 A localização geográfica precisa do problema (via coordenadas GPS)
-- 📝 Uma descrição breve do que está acontecendo
-- 🏷️ Um tipo pré-definido de ocorrência
-- 👍 Sistema de likes para priorização
+Each registered incident contains:
+- 📍 The precise geographic location of the problem (via GPS coordinates)
+- 📝 A brief description of what is happening
+- 🏷️ A pre-defined incident type
+- 👍 Likes system for prioritization
 
-O objetivo principal do projeto é fornecer uma base de dados georreferenciada para que prefeituras, gestores públicos e cidadãos possam visualizar, acompanhar e priorizar ações de manutenção urbana com base em dados colaborativos.
+The main objective of the project is to provide a georeferenced database so that city halls, public managers, and citizens can visualize, track, and prioritize urban maintenance actions.
 
-A Mapa Cidadão API serve como backend de uma aplicação web e oferece uma interface RESTful para integração com frontends modernos.
+Mapa Cidadão API serves as the backend of a web application and offers a RESTful interface for integration with modern frontends.
 
-## ✨ Funcionalidades
+## ✨ Features
 
-- **Registro de Ocorrências**: Usuários podem registrar ocorrências com localização geográfica.
-- **Tipos de Ocorrência**: Sistema de categorização com enums para diferentes tipos de problemas urbanos.
-- **Sistema de Likes**: Usuários podem dar likes em ocorrências para indicar prioridade.
-- **Autenticação**: Integração com Laravel Sanctum para autenticação de usuários.
-- **Geolocalização**: Utiliza PostGIS para armazenamento e consultas geoespaciais.
-- **API RESTful**: Endpoints bem definidos para integração com frontends.
-- **Documentação**: Documentação automática da API com Scribe.
+- **Incident Registration**: Users can register incidents with geographic location.
+- **Incident Types**: Categorization system with enums for different types of urban problems.
+- **Likes System**: Users can like incidents to indicate priority.
+- **Authentication**: Integration with Laravel Sanctum for user authentication.
+- **Geolocation**: Uses PostGIS for geospatial storage and queries.
+- **RESTful API**: Well-defined endpoints for frontend integration.
+- **Documentation**: Automatic API documentation with Scribe.
 
-## 🛠️ Tecnologias
+## 🛠️ Technologies
 
 <img align="left" alt="PHP" title="PHP" width="30px" style="padding-right: 10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg" />
 <img align="left" alt="Laravel" title="Laravel" width="30px" style="padding-right: 10px;" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg" />
@@ -42,140 +43,140 @@ A Mapa Cidadão API serve como backend de uma aplicação web e oferece uma inte
 - **PHP 8.4**
 - **Laravel 12**
 - **Docker & Docker Compose**
-- **PostgreSQL com PostGIS**
-- **Laravel Sanctum** (para autenticação)
-- **Scribe** (para documentação da API)
-- **PHPUnit** (para testes)
+- **PostgreSQL with PostGIS**
+- **Laravel Sanctum** (for authentication)
+- **Scribe** (for API documentation)
+- **PHPUnit** (for testing)
 
-## 📋 Pré-requisitos
+## 📋 Prerequisites
 
-Antes de começar, certifique-se de que você tem instalado em sua máquina:
+Before you begin, make sure you have the following installed on your machine:
 
 - [Docker](https://www.docker.com/get-started)
 - [Docker Compose](https://docs.docker.com/compose/install/)
 - [Git](https://git-scm.com/)
 
-## 🚀 Instalação
+## 🚀 Installation
 
-### 1. Clonar o Repositório
+### 1. Clone the Repository
 
 ```bash
-
+git clone https://github.com/netoandre/mapa_cidadao_api.git
 cd mapa_cidadao_api
 ```
 
-### 2. Configurar Containers Docker
+### 2. Configure Docker Containers
 
-Copie o arquivo de exemplo do Docker Compose e inicie os containers:
+Copy the Docker Compose example file and start the containers:
 
 ```bash
 cp docker-compose.example.yml docker-compose.yml
 docker compose up -d
 ```
 
-### 3. Configurar Ambiente
+### 3. Configure Environment
 
-Copie os arquivos de configuração do ambiente:
+Copy the environment configuration files:
 
 ```bash
 cp .env.example .env
 cp .env.example.testing .env.testing
 ```
 
-### 4. Entrar no Container da Aplicação
+### 4. Enter the Application Container
 
 ```bash
 docker compose exec app bash
 ```
 
-### 5. Configurar Chaves da Aplicação
+### 5. Configure Application Keys
 
-Gere as chaves para os ambientes de produção e teste:
+Generate the keys for production and test environments:
 
 ```bash
 php artisan key:generate
 php artisan key:generate --env=testing
 ```
 
-### 6. Instalar Dependências
+### 6. Install Dependencies
 
 ```bash
 composer install
 ```
 
-### 7. Executar Migrações e Seeds
+### 7. Run Migrations and Seeds
 
 ```bash
 php artisan migrate
 php artisan db:seed
 ```
 
-### 8. Executar Testes
+### 8. Run Tests
 
 ```bash
 composer test
 ```
 
-A aplicação estará rodando em `http://localhost:8000/`.
+The application will be running at `http://localhost:8000/`.
 
-## 📖 Uso
+## 📖 Usage
 
-### Endpoints Principais
+### Main Endpoints
 
-A API oferece os seguintes endpoints principais:
+The API offers the following main endpoints:
 
-#### Autenticação
-- `POST /api/register` - Registrar novo usuário
-- `POST /api/login` - Fazer login
-- `POST /api/logout` - Fazer logout
+#### Authentication
+- `POST /api/register` - Register new user
+- `POST /api/login` - User login
+- `POST /api/logout` - User logout
 
-#### Ocorrências
-- `GET /api/ocurrences` - Listar ocorrências
-- `POST /api/ocurrences` - Criar nova ocorrência
-- `GET /api/ocurrences/{id}` - Obter ocorrência específica
-- `PUT /api/ocurrences/{id}` - Atualizar ocorrência
-- `DELETE /api/ocurrences/{id}` - Deletar ocorrência
-- `POST /api/ocurrences/{id}/like` - Dar like em ocorrência
+#### Incidents
+- `GET /api/ocurrences` - List incidents
+- `POST /api/ocurrences` - Create new incident
+- `GET /api/ocurrences/{id}` - Get specific incident
+- `PUT /api/ocurrences/{id}` - Update incident
+- `DELETE /api/ocurrences/{id}` - Delete incident
+- `POST /api/ocurrences/{id}/like` - Like an incident
 
-#### Tipos de Ocorrência
-- `GET /api/types-ocurrence` - Listar tipos de ocorrência
+#### Incident Types
+- `GET /api/types-ocurrence` - List incident types
 
-### Documentação da API
+### API Documentation
 
-A documentação completa da API pode ser acessada em `http://localhost:8000/docs` (usando Scribe).
+The complete API documentation can be accessed at `http://localhost:8000/docs` (using Scribe).
 
-## 🧪 Testes
+## 🧪 Testing
 
-Para executar os testes:
+To run tests:
 
 ```bash
 composer test
 ```
 
-Ou usando PHPUnit diretamente:
+Or using PHPUnit directly:
 
 ```bash
 ./vendor/bin/phpunit
 ```
 
-## 🤝 Contribuição
+## 🤝 Contributing
 
-Contribuições são bem-vindas! Para contribuir:
+Contributions are welcome! To contribute:
 
-1. Fork o projeto
-2. Crie uma branch para sua feature (`git checkout -b feature/nova-feature`)
-3. Commit suas mudanças (`git commit -am 'Adiciona nova feature'`)
-4. Push para a branch (`git push origin feature/nova-feature`)
-5. Abra um Pull Request
+1. Fork the project
+2. Create a branch for your feature (`git checkout -b feature/new-feature`)
+3. Commit your changes (`git commit -am 'Add new feature'`)
+4. Push to the branch (`git push origin feature/new-feature`)
+5. Open a Pull Request
 
-## 📄 Licença
+## 📄 License
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+This project is under the MIT license. See the [LICENSE](LICENSE) file for more details.
 
-## 📞 Contato
+## 📞 Contact
 
-Para dúvidas ou sugestões, entre em contato com a equipe de desenvolvimento.
+For questions or suggestions, please contact the development team.
 
 ---
 
-Desenvolvido com ❤️ usando Laravel
+Developed with ❤️ using Laravel
