@@ -1,8 +1,8 @@
-# Mapa Cidadão API
+# CitizenMap API
 
 ## 📋 Description
 
-**Mapa Cidadão API** is a backend application developed in Laravel that enables the registration and monitoring of urban incidents on an interactive map. Focused on citizen participation and public management, the application allows users to report various types of problems affecting their neighborhoods.
+**CitizenMap API** is a backend application developed in Laravel that enables the registration and monitoring of urban incidents on an interactive map. Focused on citizen participation and public management, the application allows users to report various types of problems affecting their neighborhoods.
 
 Examples of incidents that can be registered:
 - 🗑️ Garbage accumulation
